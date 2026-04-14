@@ -1,0 +1,168 @@
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --text-dark: #333;
+    --text-light: #f4f4f4;
+    --bg-light: #ffffff;
+    --sidebar-width: 280px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+.resume-container {
+    background: var(--bg-light);
+    max-width: 1000px;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 40px 25px;
+}
+
+.profile-section { text-align: center; margin-bottom: 40px; }
+
+.profile-photo img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-color);
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.sidebar h1 { font-size: 1.6rem; margin-bottom: 5px; }
+.job-title { font-weight: 300; color: #bdc3c7; font-size: 0.9rem; }
+
+.sidebar-block { margin-bottom: 30px; }
+.sidebar-block h3 { 
+    font-size: 1.1rem; 
+    border-bottom: 1px solid #555; 
+    padding-bottom: 5px; 
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.sidebar-block p { font-size: 0.85rem; margin-bottom: 10px; }
+.sidebar-block ul { list-style: none; }
+.sidebar-block li { font-size: 0.9rem; margin-bottom: 8px; }
+
+.hobby-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.hobby-tags span {
+    background: rgba(255,255,255,0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+/* Main Content */
+.main-content { flex: 1; padding: 40px 50px; }
+
+section { margin-bottom: 30px; }
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.entry { 
+    margin-bottom: 20px; 
+    transition: 0.3s;
+    border-left: 2px solid transparent;
+}
+
+.entry:hover {
+    border-left: 2px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.organization { font-style: italic; color: #666; margin-bottom: 5px; }
+
+ul { padding-left: 20px; }
+li { margin-bottom: 5px; }
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.skill-item { font-size: 0.9rem; font-weight: 600; }
+
+.bar {
+    background: #eee;
+    height: 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.fill {
+    background: var(--accent-color);
+    height: 100%;
+    transition: 0.5s ease-in-out;
+}
+
+/* Mobile & Print */
+@media (max-width: 768px) {
+    .resume-container { flex-direction: column; }
+    .sidebar { width: 100%; text-align: center; }
+    .skills-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+    body { background: none; padding: 0; }
+    .resume-container { box-shadow: none; width: 100%; }
+    .sidebar { -webkit-print-color-adjust: exact; }
+    .fill { -webkit-print-color-adjust: exact; background-color: var(--accent-color) !important; }
+}
+CSS
+@media print {
+    /* Reduce the overall page margins */
+    body { padding: 0; }
+    
+    /* Shrink the sidebar and main padding */
+    .sidebar { padding: 20px 15px; width: 240px; }
+    .main-content { padding: 20px 30px; }
+    
+    /* Make text slightly smaller to save space */
+    h2 { margin-bottom: 10px; font-size: 1.2rem; }
+    section { margin-bottom: 15px; }
+    p, li { font-size: 0.85rem; line-height: 1.4; }
+    
+    /* Prevent a section from being split across two pages */
+    section { page-break-inside: avoid; }
+    
+    /* Ensure the container takes up the full page height */
+    .resume-container { height: 100vh; box-shadow: none; border: none; }
+}
